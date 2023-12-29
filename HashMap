@@ -1,0 +1,41 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class EmployeeStudentInfo {
+
+    // Creating a HashMap to store employee or student details
+    private static Map<String, String> employeeInfo = new HashMap<>();
+
+    // Method to add sample data to the HashMap
+    private static void initializeData() {
+        employeeInfo.put("E001", "John Doe, Software Engineer");
+        employeeInfo.put("E002", "Jane Smith, HR Specialist");
+        // Add more entries as needed
+    }
+
+    // Method to display details based on ID input
+    private static void displayDetails(String id) {
+        if (employeeInfo.containsKey(id)) {
+            System.out.println("Details for ID " + id + ": " + employeeInfo.get(id));
+        } else {
+            System.out.println("No information found for ID " + id);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Initialize data when the program starts
+        initializeData();
+
+        // Taking user input for employee or student ID
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Employee ID: ");
+        String userInput = scanner.nextLine().toUpperCase(); // Convert to uppercase for case-insensitivity
+
+        // Displaying details based on user input
+        displayDetails(userInput);
+        
+        // Closing scanner to prevent resource leak
+        scanner.close();
+    }
+}
